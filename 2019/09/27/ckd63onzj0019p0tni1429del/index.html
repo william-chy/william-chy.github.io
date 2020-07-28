@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Dos cmd命令和Bash shell 命令之间的对比命令比较：    DOS 命令 UNIX或Bash命令 作用     DIR ls -l (or use ls -lF)(-a all files)(df -k Space remaining on filesystem) 列出目录内容   DIR . /o-d DIR . /v /os DIR /s DIR /aa ls -tr ls -l">
+<meta name="keywords" content="Front-End">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cmd和shell脚本学习">
+<meta property="og:url" content="http://www.whitet.top/2019/09/27/ckd63onzj0019p0tni1429del/index.html">
+<meta property="og:site_name" content="William&#39;s blog">
+<meta property="og:description" content="Dos cmd命令和Bash shell 命令之间的对比命令比较：    DOS 命令 UNIX或Bash命令 作用     DIR ls -l (or use ls -lF)(-a all files)(df -k Space remaining on filesystem) 列出目录内容   DIR . /o-d DIR . /v /os DIR /s DIR /aa ls -tr ls -l">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-17T02:40:41.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cmd和shell脚本学习">
+<meta name="twitter:description" content="Dos cmd命令和Bash shell 命令之间的对比命令比较：    DOS 命令 UNIX或Bash命令 作用     DIR ls -l (or use ls -lF)(-a all files)(df -k Space remaining on filesystem) 列出目录内容   DIR . /o-d DIR . /v /os DIR /s DIR /aa ls -tr ls -l">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.whitet.top/2019/09/27/ckd63onzj0019p0tni1429del/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>cmd和shell脚本学习 | William's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-140223015-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-140223015-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">William's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Front-End Developer.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.whitet.top/2019/09/27/ckd63onzj0019p0tni1429del/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Chen">
+      <meta itemprop="description" content="前端 学习 技术 分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">cmd和shell脚本学习
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-27T00:00:00+08:00">2019-09-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/09/27/ckd63onzj0019p0tni1429del/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/27/ckd63onzj0019p0tni1429del/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Dos-cmd命令和Bash-shell-命令之间的对比"><a href="#Dos-cmd命令和Bash-shell-命令之间的对比" class="headerlink" title="Dos cmd命令和Bash shell 命令之间的对比"></a>Dos cmd命令和Bash shell 命令之间的对比</h2><p>命令比较：</p>
+<table>
+<thead>
+<tr>
+<th>DOS 命令</th>
+<th>UNIX或Bash命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DIR</td>
+<td>ls -l (or use ls -lF)(-a all files)(df -k Space remaining on filesystem)</td>
+<td>列出目录内容</td>
+</tr>
+<tr>
+<td>DIR <em>.</em> /o-d DIR <em>.</em> /v /os DIR /s DIR /aa</td>
+<td>ls -tr ls -ls ls -R ls -a</td>
+<td>按修改/创建的反向时间列出目录内容。 列表文件和大小 递归列出目录/子目录内容。 列出隐藏文件。</td>
+</tr>
+<tr>
+<td>TREE</td>
+<td>ls -R</td>
+<td>列表目录递归</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>cd</td>
+<td>更改目录</td>
+</tr>
+<tr>
+<td>MKDIR MD</td>
+<td>mkdir</td>
+<td>创建一个新目录</td>
+</tr>
+<tr>
+<td>ASSIGN</td>
+<td>ln</td>
+<td>创建文件或目录链接</td>
+</tr>
+<tr>
+<td>RMDIR RD</td>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>CHDIR</td>
+<td>pwd</td>
+<td>显示目录位置</td>
+</tr>
+<tr>
+<td>DEL ERASE</td>
+<td>rm -iv</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>RMDIR /S (NT) DELTREE (Win 95…)</td>
+<td>rm -R</td>
+<td>删除给定目录下的所有目录和文件</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>cp -piv</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>XCOPY</td>
+<td>cp -R</td>
+<td>递归复制目录的所有文件</td>
+</tr>
+<tr>
+<td>RENAME or MOVE</td>
+<td>mv -iv</td>
+<td>重命名/移动文件</td>
+</tr>
+<tr>
+<td>TYPE</td>
+<td>cat</td>
+<td>将文件的内容转储到用户屏幕</td>
+</tr>
+<tr>
+<td>MORE</td>
+<td>more</td>
+<td>管道一次输出一页</td>
+</tr>
+<tr>
+<td>HELP or COMMAND /?</td>
+<td>man</td>
+<td>在线手册</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>clear ctrl-l</td>
+<td>清除屏幕</td>
+</tr>
+<tr>
+<td>EXIT EXIT0</td>
+<td>exit exit 0</td>
+<td>退出一个shell</td>
+</tr>
+<tr>
+<td>FIND FINDSTR</td>
+<td>grep</td>
+<td>在命令行中给出的文件中查找单词</td>
+</tr>
+<tr>
+<td>COMP</td>
+<td>diff</td>
+<td>比较两个文件并显示差异。另见comm，cmp，mgdiff和tkdiff。</td>
+</tr>
+<tr>
+<td>FC</td>
+<td>diff</td>
+<td>比较两个文件并显示差异。另见comm，cmp，mgdiff和tkdiff。</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>set and env</td>
+<td>列出所有环境变量</td>
+</tr>
+<tr>
+<td>SET variable=value echo %variable%</td>
+<td>set export variable=value echo $variable</td>
+<td>设置环境变量 显示环境变量</td>
+</tr>
+<tr>
+<td>ECHO text</td>
+<td>echo text</td>
+<td>回显文本到屏幕</td>
+</tr>
+<tr>
+<td>SET variable</td>
+<td>setenv (for C shell) or export VAR=val (for Korn shell. Also VAR=val)</td>
+<td>设置环境变量</td>
+</tr>
+<tr>
+<td>PATH PATH %PATH%;C:DIR</td>
+<td>echo $PATH<br>PATH=$PATH:/dir</td>
+<td>显示可执行文件的搜索路径。 设置PATH环境变量。</td>
+</tr>
+<tr>
+<td>PROMPT $p$g</td>
+<td>export PS1=’h(u)W&gt; ‘</td>
+<td>设置用户命令提示符。</td>
+</tr>
+<tr>
+<td>DATE or TIME</td>
+<td>date</td>
+<td>显示日期。（还设置日期 - 仅限DOS）</td>
+</tr>
+<tr>
+<td>DOSKEY /h</td>
+<td>history</td>
+<td>列出命令历史记录</td>
+</tr>
+<tr>
+<td>DOSKEY  NAME=command</td>
+<td>alias NAME=command</td>
+<td>设置命令别名</td>
+</tr>
+<tr>
+<td>BREAK ON</td>
+<td>trap</td>
+<td>断开 ctrl-break / Trap信号。</td>
+</tr>
+<tr>
+<td>SORT</td>
+<td>sort</td>
+<td>按字母顺序/数字排序数据</td>
+</tr>
+<tr>
+<td>EDLIN</td>
+<td>ed</td>
+<td>线模式编辑器</td>
+</tr>
+<tr>
+<td>EDIT filename.txt</td>
+<td>pico, gnp, vi, xedit, xemacs,dtpad</td>
+<td>编辑文件。看起来最像DOS编辑的Linux编辑器可能是Pico。（不是推荐！）</td>
+</tr>
+<tr>
+<td>BACKUP files A:\</td>
+<td>tar -cvf /dev/fd0 files mdir, mcopy doswrite -a file (AIX only)</td>
+<td>将文件保存到软盘。</td>
+</tr>
+<tr>
+<td>RESTORE A:files</td>
+<td>tar -xvf /dev/fd0 files mdir, mcopy  dosread -a file (AIX only)</td>
+<td>从软盘中读取文件。</td>
+</tr>
+<tr>
+<td>ATTRIB [+r\</td>
+<td>-r] [+a-a] [+s\</td>
+<td>-s] [path&#124;file] /s</td>
+<td>chmod</td>
+<td>更改文件权限。DOS：+：设置为 - ：删除r：只读a：存档s：System / s：递归</td>
+</tr>
+<tr>
+<td>ATTRIB +h or -h</td>
+<td>mv file .file</td>
+<td>将文件更改为隐藏文件 - 使用前缀“。”重命名文件。</td>
+</tr>
+<tr>
+<td>PRINT</td>
+<td>lpr</td>
+<td>打印文件</td>
+</tr>
+<tr>
+<td>CALL COMMAND /C (DOS),  CMD (NT)</td>
+<td>source script (cshrc) . script (bash) sh script</td>
+<td>从批处理shell中执行脚本。</td>
+</tr>
+<tr>
+<td>MEM</td>
+<td>free  top</td>
+<td>在系统上显示可用内存</td>
+</tr>
+<tr>
+<td>TASKLIST (WIN2K, XP)</td>
+<td>ps -aux  top</td>
+<td>列出活动进程的可执行文件名，进程ID号和内存使用情况</td>
+</tr>
+<tr>
+<td>MSD</td>
+<td>lsdev</td>
+<td>显示系统信息（从AIX借用的命令）</td>
+</tr>
+<tr>
+<td>SCANDISK  DEFRAG C:</td>
+<td>fsck  debugfs</td>
+<td>检查并修复硬盘文件系统</td>
+</tr>
+<tr>
+<td>CHDISK</td>
+<td>du -s</td>
+<td>磁盘使用情况。</td>
+</tr>
+<tr>
+<td>FDISK</td>
+<td>fdisk</td>
+<td>分区硬盘的工具。</td>
+</tr>
+<tr>
+<td>SUBST V:  C:directorypath</td>
+<td>mount</td>
+<td>将驱动器号安装到硬盘驱动器上的文件夹/目录中。</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>mke2fs  See: fdformat and mformat for floppies</td>
+<td>格式化驱动文件系统</td>
+</tr>
+<tr>
+<td>VER</td>
+<td>uname -a  echo $SHELL cat /etc/issue</td>
+<td>操作系统/ shell版本</td>
+</tr>
+<tr>
+<td>pkzip</td>
+<td>tar and zip</td>
+<td>压缩和解压缩文件/目录。在压缩之前使用tar创建目录的编译。Linux也有 压缩， gzip</td>
+</tr>
+<tr>
+<td>HOSTNAME</td>
+<td>hostname</td>
+<td>打印计算机的主机名</td>
+</tr>
+<tr>
+<td>PING</td>
+<td>ping</td>
+<td>将数据包发送到网络主机</td>
+</tr>
+<tr>
+<td>TRACERT</td>
+<td>traceroute</td>
+<td>将路由和路由器跃点显示给给定的网络目标。</td>
+</tr>
+<tr>
+<td>IPCONFIG (NT) WINIPCFG (Win 95…)</td>
+<td>ifconfig ip addr show</td>
+<td>显示/配置网络接口</td>
+</tr>
+<tr>
+<td>NBTSTAT (Netbios info: -n, -c) NBTSTAT -A IP-address</td>
+<td>nslookup host-name host host-name</td>
+<td>打印主机的DNS信息。</td>
+</tr>
+<tr>
+<td>NBTSTAT -a hostname</td>
+<td>nmblookup -A hostname</td>
+<td>查找NetBIOS名称。</td>
+</tr>
+<tr>
+<td>ROUTE PRINT</td>
+<td>route -n</td>
+<td>打印路由表</td>
+</tr>
+<tr>
+<td>NET HELP START</td>
+<td>chkconfig –list \</td>
+<td>grep on</td>
+<td>列出服务。</td>
+</tr>
+<tr>
+<td>NET STARTservice-name NET STOPservice-name</td>
+<td>service service-name start service service-name stop</td>
+<td>启动/停止服务/守护程序。</td>
+</tr>
+<tr>
+<td>NET SHARES</td>
+<td>df</td>
+<td>显示已安装的共享/文件系统。</td>
+</tr>
+<tr>
+<td>NET SEND <node-name> <message> (NT)</message></node-name></td>
+<td>smbclient -M MS-Windows-host-name talk</td>
+<td>将弹出窗口发送到MS / Windows PC  发送消息给另一个Unix / Linux用户</td>
+</tr>
+<tr>
+<td>WIN</td>
+<td>startx</td>
+<td>启动X-Windows。</td>
+</tr>
+<tr>
+<td>REBOOT</td>
+<td>shutdown -r now</td>
+<td>重启系统。</td>
+</tr>
+</tbody>
+</table>
+<p>Shell描述符/运算符：</p>
+<table>
+<thead>
+<tr>
+<th>DOS描述符/运算符</th>
+<th>UNIX或Bash描述符/运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>/</td>
+<td>目录路径分隔符</td>
+</tr>
+<tr>
+<td>.\</td>
+<td>./</td>
+<td>当前目录</td>
+</tr>
+<tr>
+<td>.. ../</td>
+<td>父目录</td>
+<td></td>
+</tr>
+<tr>
+<td>ctrl-z</td>
+<td>ctrl-d</td>
+<td>文件结尾/关闭shell</td>
+</tr>
+<tr>
+<td>ctrl-c</td>
+<td>ctrl-c</td>
+<td>中断/进程中断</td>
+</tr>
+<tr>
+<td>*</td>
+<td>*</td>
+<td>文件名通配符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>单字符通配符</td>
+</tr>
+<tr>
+<td>%VAR%</td>
+<td>$VAR</td>
+<td>变量名</td>
+</tr>
+<tr>
+<td>%1 %2 %3</td>
+<td>$1 $2 $3</td>
+<td>第一，第二和第三个shell命令行参数。</td>
+</tr>
+<tr>
+<td>/</td>
+<td>-</td>
+<td>命令行选项标志前缀</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>\</td>
+<td></td>
+<td>管道符号</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>&gt;</td>
+<td>标准重定向</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>&gt;&gt;</td>
+<td>标准输出重定向覆盖</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&lt;</td>
+<td>标准输入重定向</td>
+</tr>
+</tbody>
+</table>
+<p>Shell脚本操作符：</p>
+<table>
+<thead>
+<tr>
+<th>DOS运算符</th>
+<th>UNIX或Bash运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@ ECHO OFF</td>
+<td>set +v</td>
+<td>关闭详细模式。-v：在执行时回显每个shell脚本行。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>$</td>
+<td>命令行参数前缀。DOS：％1 Bash：第一个参数$ 1。</td>
+</tr>
+<tr>
+<td>REM</td>
+<td>#</td>
+<td>注释（不处理。）</td>
+</tr>
+<tr>
+<td>==</td>
+<td>=</td>
+<td>字符串“等于”比较</td>
+</tr>
+<tr>
+<td>!==!</td>
+<td>!=</td>
+<td>字符串“不等于”比较</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>!</td>
+<td>测试表达的否定</td>
+</tr>
+<tr>
+<td>CHOICE</td>
+<td>case</td>
+<td>case / switch语句</td>
+</tr>
+<tr>
+<td>IF IF EXIST C:filename IF NOT EXIST C:filename</td>
+<td>if [[ test-resulting-in-bool ]]; then … elif …; then … else … fi if [ -e /dir/filename ]; then if [ ! -e /dir/filename ];  then</td>
+<td>如果测试 如果文件存在 如果文件不存在。</td>
+</tr>
+<tr>
+<td>FOR … IN … DO FOR %%fff IN (C:dir<em>.</em>) DO echo %%fff</td>
+<td>for ffiillee in lliisstt; do …; done for (( expr1; expr2; expr3; )) do …; done</td>
+<td>使用循环</td>
+</tr>
+<tr>
+<td>ERRORLEVEL</td>
+<td>$?</td>
+<td>退出状态/返回代码</td>
+</tr>
+<tr>
+<td>PAUSE</td>
+<td>sleep</td>
+<td>睡眠指定的间隔</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onzk001bp0tn4xeit3an/" rel="next" title="web海报合成">
+                <i class="fa fa-chevron-left"></i> web海报合成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onzh0017p0tnmdavcfpr/" rel="prev" title="待整理">
+                待整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">William Chen</p>
+              <div class="site-description motion-element" itemprop="description">前端 学习 技术 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/william-chy" title="GitHub &rarr; https://github.com/william-chy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:okm199911@outlook.com" title="E-Mail &rarr; mailto:okm199911@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/monkeychy6" title="Twitter &rarr; https://twitter.com/monkeychy6" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/people/William-Chen/100026041339393" title="FB Page &rarr; https://www.facebook.com/people/William-Chen/100026041339393" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/11491125/陈长生" title="StackOverflow &rarr; https://stackoverflow.com/users/11491125/陈长生" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/williamchen48" title="Instagram &rarr; https://instagram.com/williamchen48" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <audio autoplay controls loop style="width: 225px;">
+            Your browser does not support the <code>audio</code> element.
+            <source src="http://www.whitet.top/asserts/01.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/02.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/03.mp3" type="audio/mp3">
+          </audio>
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dos-cmd命令和Bash-shell-命令之间的对比"><span class="nav-number">1.</span> <span class="nav-text">Dos cmd命令和Bash shell 命令之间的对比</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Chen</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://william-chy.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.whitet.top/2019/09/27/ckd63onzj0019p0tni1429del/";
+    this.page.identifier = "2019/09/27/ckd63onzj0019p0tni1429del/";
+    this.page.title = 'cmd和shell脚本学习';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://william-chy.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'Wd4zdoJQYs2Re01wPmIrgzO6Le7EkEn1jCQL6yYEdamqTcwXt8V58AqadRPieltG',
+    shortname: 'william-chy'
+  });
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

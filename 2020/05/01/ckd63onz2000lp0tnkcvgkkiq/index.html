@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vue3.0发布了beta版本，这次有个vite的no webpage工具，正好用于快速熟悉vue3  12345mkdir vue-vite 新建文件夹npm init -y 初始化项目npm i vite -g 全局安装vitecd vue-vite 进入目录vite 启动项目 但是这样不支持热更新，你还需要@vue/compiler-sfc 1234567&amp;quot;dependencie">
+<meta name="keywords" content="vue3.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3.0_RFC个人解读">
+<meta property="og:url" content="http://www.whitet.top/2020/05/01/ckd63onz2000lp0tnkcvgkkiq/index.html">
+<meta property="og:site_name" content="William&#39;s blog">
+<meta property="og:description" content="vue3.0发布了beta版本，这次有个vite的no webpage工具，正好用于快速熟悉vue3  12345mkdir vue-vite 新建文件夹npm init -y 初始化项目npm i vite -g 全局安装vitecd vue-vite 进入目录vite 启动项目 但是这样不支持热更新，你还需要@vue/compiler-sfc 1234567&amp;quot;dependencie">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-17T03:46:41.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue3.0_RFC个人解读">
+<meta name="twitter:description" content="vue3.0发布了beta版本，这次有个vite的no webpage工具，正好用于快速熟悉vue3  12345mkdir vue-vite 新建文件夹npm init -y 初始化项目npm i vite -g 全局安装vitecd vue-vite 进入目录vite 启动项目 但是这样不支持热更新，你还需要@vue/compiler-sfc 1234567&amp;quot;dependencie">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.whitet.top/2020/05/01/ckd63onz2000lp0tnkcvgkkiq/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue3.0_RFC个人解读 | William's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-140223015-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-140223015-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">William's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Front-End Developer.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.whitet.top/2020/05/01/ckd63onz2000lp0tnkcvgkkiq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Chen">
+      <meta itemprop="description" content="前端 学习 技术 分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">vue3.0_RFC个人解读
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-05-01T00:00:00+08:00">2020-05-01</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/05/01/ckd63onz2000lp0tnkcvgkkiq/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/01/ckd63onz2000lp0tnkcvgkkiq/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>vue3.0发布了beta版本，这次有个vite的no webpage工具，正好用于快速熟悉vue3</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir vue-vite 新建文件夹</span><br><span class="line">npm init -y 初始化项目</span><br><span class="line">npm i vite -g 全局安装vite</span><br><span class="line">cd vue-vite 进入目录</span><br><span class="line">vite 启动项目</span><br></pre></td></tr></table></figure>
+<p>但是这样不支持热更新，你还需要@vue/compiler-sfc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;vue&quot;: &quot;^3.0.0-beta.10&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;devDependencies&quot;: &#123;</span><br><span class="line">  &quot;vite&quot;: &quot;^0.15.0&quot;,</span><br><span class="line">  &quot;@vue/compiler-sfc&quot;: &quot;^3.0.0-beta.10&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="官方Getting-Started"><a href="#官方Getting-Started" class="headerlink" title="官方Getting Started"></a>官方Getting Started</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-vite-app &lt;project-name&gt;</span><br><span class="line">$ cd &lt;project-name&gt;</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<h2 id="proxy复习"><a href="#proxy复习" class="headerlink" title="proxy复习"></a>proxy复习</h2><p>下面是 Proxy 支持的拦截操作一览，一共 13 种。</p>
+<ul>
+<li><p><strong>get(target, propKey, receiver)</strong>：拦截对象属性的读取，比如<code>proxy.foo</code>和<code>proxy[&#39;foo&#39;]</code>。</p>
+</li>
+<li><p><strong>set(target, propKey, value, receiver)</strong>：拦截对象属性的设置，比如<code>proxy.foo = v</code>或<code>proxy[&#39;foo&#39;] = v</code>，返回一个布尔值。</p>
+</li>
+<li><p><strong>has(target, propKey)</strong>：拦截<code>propKey in proxy</code>的操作，返回一个布尔值。</p>
+<p>值得注意的是，<code>has</code>方法拦截的是<code>HasProperty</code>操作，而不是<code>HasOwnProperty</code>操作，即<code>has</code>方法不判断一个属性是对象自身的属性，还是继承的属性。</p>
+<p>如果原对象不可配置或者禁止扩展，这时<code>has</code>拦截会报错。</p>
+<p>另外，虽然<code>for...in</code>循环也用到了<code>in</code>运算符，但是<code>has</code>拦截对<code>for...in</code>循环不生效。</p>
+</li>
+<li><p><strong>deleteProperty(target, propKey)</strong>：拦截<code>delete proxy[propKey]</code>的操作，返回一个布尔值。</p>
+</li>
+<li><p><strong>ownKeys(target)</strong>：拦截<code>Object.getOwnPropertyNames(proxy)</code>、<code>Object.getOwnPropertySymbols(proxy)</code>、<code>Object.keys(proxy)</code>、<code>for...in</code>循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而<code>Object.keys()</code>的返回结果仅包括目标对象自身的可遍历属性。</p>
+</li>
+<li><p><strong>getOwnPropertyDescriptor(target, propKey)</strong>：拦截<code>Object.getOwnPropertyDescriptor(proxy, propKey)</code>，返回属性的描述对象。</p>
+</li>
+<li><p><strong>defineProperty(target, propKey, propDesc)</strong>：拦截<code>Object.defineProperty(proxy, propKey, propDesc）</code>、<code>Object.defineProperties(proxy, propDescs)</code>，返回一个布尔值。</p>
+</li>
+<li><p>preventExtensions(target)：拦截<code>Object.preventExtensions(proxy)</code>，返回一个布尔值。</p>
+<p>这个方法有一个限制，只有目标对象不可扩展时（即<code>Object.isExtensible(proxy)</code>为<code>false</code>），<code>proxy.preventExtensions</code>才能返回<code>true</code>，否则会报错。</p>
+</li>
+<li><p><strong>getPrototypeOf(target)</strong>：拦截<code>Object.getPrototypeOf(proxy)</code>，返回一个对象。</p>
+<p><code>getPrototypeOf()</code>方法主要用来拦截获取对象原型。具体来说，拦截下面这些操作。</p>
+<ul>
+<li><code>Object.prototype.__proto__</code></li>
+<li><code>Object.prototype.isPrototypeOf()</code></li>
+<li><code>Object.getPrototypeOf()</code></li>
+<li><code>Reflect.getPrototypeOf()</code></li>
+<li><code>instanceof</code></li>
+</ul>
+</li>
+<li><p>isExtensible(target)：拦截<code>Object.isExtensible(proxy)</code>，返回一个布尔值。</p>
+<p>这个方法有一个强限制，它的返回值必须与目标对象的<code>isExtensible</code>属性保持一致，否则就会抛出错误。 就是只做监听不得改写。</p>
+</li>
+<li><p><strong>setPrototypeOf(target, proto)</strong>：拦截<code>Object.setPrototypeOf(proxy, proto)</code>，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。</p>
+</li>
+<li><p><strong>apply(target, object, args)</strong>：拦截 Proxy 实例作为<strong>函数</strong>调用的操作，比如<code>proxy(...args)</code>、<code>proxy.call(object, ...args)</code>、<code>proxy.apply(...)</code>。</p>
+</li>
+<li><p><strong>construct(target, args)</strong>：拦截 Proxy 实例作为<strong>构造函数</strong>调用的操作，比如<code>new proxy(...args)</code>。</p>
+</li>
+</ul>
+<h2 id="Reflect复习"><a href="#Reflect复习" class="headerlink" title="Reflect复习"></a>Reflect复习</h2><p><code>Reflect</code>对象与<code>Proxy</code>对象一样，也是 ES6 为了操作对象而提供的新 API。<code>Reflect</code>对象的设计目的有这样几个。</p>
+<p>（1） 将<code>Object</code>对象的一些明显属于语言内部的方法（比如<code>Object.defineProperty</code>），放到<code>Reflect</code>对象上。现阶段，某些方法同时在<code>Object</code>和<code>Reflect</code>对象上部署，未来的新方法将只部署在<code>Reflect</code>对象上。也就是说，从<code>Reflect</code>对象上可以拿到语言内部的方法。</p>
+<p>（2） 修改某些<code>Object</code>方法的返回结果，让其变得更合理。比如，<code>Object.defineProperty(obj, name, desc)</code>在无法定义属性时，会抛出一个错误，而<code>Reflect.defineProperty(obj, name, desc)</code>则会返回<code>true</code>或<code>false</code>。</p>
+<p>（3） 让<code>Object</code>操作都变成函数行为。某些<code>Object</code>操作是命令式，比如<code>name in obj</code>和<code>delete obj[name]</code>，而<code>Reflect.has(obj, name)</code>和<code>Reflect.deleteProperty(obj, name)</code>让它们变成了函数行为。</p>
+<p>（4）<code>Reflect</code>对象的方法与<code>Proxy</code>对象的方法一一对应，只要是<code>Proxy</code>对象的方法，就能在<code>Reflect</code>对象上找到对应的方法。这就让<code>Proxy</code>对象可以方便地调用对应的<code>Reflect</code>方法，完成默认行为，作为修改行为的基础。也就是说，不管<code>Proxy</code>怎么修改默认行为，你总可以在<code>Reflect</code>上获取默认行为。</p>
+<p><code>Reflect</code>对象一共有 13 个静态方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- <span class="built_in">Reflect</span>.apply(target, thisArg, args)</span><br><span class="line">- <span class="built_in">Reflect</span>.construct(target, args)</span><br><span class="line">- <span class="built_in">Reflect</span>.get(target, name, receiver)</span><br><span class="line">- <span class="built_in">Reflect</span>.set(target, name, value, receiver)</span><br><span class="line">- <span class="built_in">Reflect</span>.defineProperty(target, name, desc)</span><br><span class="line">- <span class="built_in">Reflect</span>.deleteProperty(target, name)</span><br><span class="line">- <span class="built_in">Reflect</span>.has(target, name)</span><br><span class="line">- <span class="built_in">Reflect</span>.ownKeys(target)</span><br><span class="line">- <span class="built_in">Reflect</span>.isExtensible(target)</span><br><span class="line">- <span class="built_in">Reflect</span>.preventExtensions(target)</span><br><span class="line">- <span class="built_in">Reflect</span>.getOwnPropertyDescriptor(target, name)</span><br><span class="line">- <span class="built_in">Reflect</span>.getPrototypeOf(target)</span><br><span class="line">- <span class="built_in">Reflect</span>.setPrototypeOf(target, prototype)</span><br></pre></td></tr></table></figure>
+<p>上面这些方法的作用，大部分与<code>Object</code>对象的同名方法的作用都是相同的，而且它与<code>Proxy</code>对象的方法是一一对应的。</p>
+<h2 id="Composition-API"><a href="#Composition-API" class="headerlink" title="Composition API"></a>Composition API</h2><h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>调用时机 ：创建组件实例，然后初始化 <code>props</code> ，紧接着就调用<code>setup</code> 函数。从生命周期钩子的视角来看，它会在 <code>beforeCreate</code> 钩子之前被调用。在<code>data</code>初始化之前（data在beforeCreate之后created之前）。词法环境的this为undefined</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setup?: <span class="function">(<span class="params"><span class="keyword">this</span>: <span class="built_in">void</span>, props: Props, ctx: SetupContext&lt;E&gt;</span>) =&gt;</span> RawBindings | RenderFunction | <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> SetupContext&lt;E = ObjectEmitsOptions&gt; &#123;</span><br><span class="line">    attrs: Data;</span><br><span class="line">    slots: Slots;</span><br><span class="line">    emit: EmitFn&lt;E&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h3><p>接收一个普通对象然后返回该普通对象的响应式代理。等同于 2.x 的 Vue.observable()</p>
+<p>const obj = reactive({ count: 0 })<br>响应式转换是“深层的”：会影响对象内部所有嵌套的属性。基于 ES2015 的 Proxy 实现，返回的代理对象不等于原始对象。建议仅使用代理对象而避免依赖原始对象。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a><code>ref</code></h3><p>接受一个参数值并返回一个响应式且可改变的 ref 对象。ref 对象拥有一个指向内部值的单一属性 <code>.value</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> Ref&lt;T = any&gt; &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Type differentiator only.</span></span><br><span class="line"><span class="comment">     * We need this to be in public d.ts but don't want it to show up in IDE</span></span><br><span class="line"><span class="comment">     * autocomplete, so we use a private Symbol instead.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    [RefSymbol]: <span class="literal">true</span>;</span><br><span class="line">    value: T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a>watchEffect</h3><p>立即执行传入的一个函数，并响应式追踪其依赖，并在其依赖变更时重新运行该函数。</p>
+<h2 id="自我总结"><a href="#自我总结" class="headerlink" title="自我总结"></a>自我总结</h2><h4 id="setup-1"><a href="#setup-1" class="headerlink" title="setup"></a>setup</h4><ul>
+<li>是Composition API 的入口点。</li>
+<li>在prop之后data之前。</li>
+<li>返回对象是响应式的。</li>
+<li>返回ref会在模板自动解开不用加<code>.value</code></li>
+</ul>
+<h4 id="reactive-1"><a href="#reactive-1" class="headerlink" title="reactive"></a>reactive</h4><ul>
+<li>返回响应式proxy，等同于 2.x 的 Vue.observable()，操作会影响源对象。但是不等于源对象（因为是proxy对象，原型不一样）</li>
+<li></li>
+</ul>
+<h2 id="vuejs-rfcs"><a href="#vuejs-rfcs" class="headerlink" title="vuejs/rfcs"></a><a href="https://github.com/vuejs" target="_blank" rel="noopener">vuejs</a>/<strong><a href="https://github.com/vuejs/rfcs" target="_blank" rel="noopener">rfcs</a></strong></h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue3-0/" rel="tag"># vue3.0</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/27/ckd63ony70001p0tnoskdos24/" rel="next" title="graphQL初体验">
+                <i class="fa fa-chevron-left"></i> graphQL初体验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">William Chen</p>
+              <div class="site-description motion-element" itemprop="description">前端 学习 技术 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/william-chy" title="GitHub &rarr; https://github.com/william-chy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:okm199911@outlook.com" title="E-Mail &rarr; mailto:okm199911@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/monkeychy6" title="Twitter &rarr; https://twitter.com/monkeychy6" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/people/William-Chen/100026041339393" title="FB Page &rarr; https://www.facebook.com/people/William-Chen/100026041339393" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/11491125/陈长生" title="StackOverflow &rarr; https://stackoverflow.com/users/11491125/陈长生" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/williamchen48" title="Instagram &rarr; https://instagram.com/williamchen48" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <audio autoplay controls loop style="width: 225px;">
+            Your browser does not support the <code>audio</code> element.
+            <source src="http://www.whitet.top/asserts/01.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/02.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/03.mp3" type="audio/mp3">
+          </audio>
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">官方Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy复习"><span class="nav-number">2.</span> <span class="nav-text">proxy复习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflect复习"><span class="nav-number">3.</span> <span class="nav-text">Reflect复习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composition-API"><span class="nav-number">4.</span> <span class="nav-text">Composition API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setup"><span class="nav-number">4.1.</span> <span class="nav-text">setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reactive"><span class="nav-number">4.2.</span> <span class="nav-text">reactive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">4.3.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watchEffect"><span class="nav-number">4.4.</span> <span class="nav-text">watchEffect</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自我总结"><span class="nav-number">5.</span> <span class="nav-text">自我总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setup-1"><span class="nav-number">5.0.1.</span> <span class="nav-text">setup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reactive-1"><span class="nav-number">5.0.2.</span> <span class="nav-text">reactive</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#vuejs-rfcs"><span class="nav-number">6.</span> <span class="nav-text">vuejs/rfcs</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Chen</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://william-chy.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.whitet.top/2020/05/01/ckd63onz2000lp0tnkcvgkkiq/";
+    this.page.identifier = "2020/05/01/ckd63onz2000lp0tnkcvgkkiq/";
+    this.page.title = 'vue3.0_RFC个人解读';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://william-chy.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'Wd4zdoJQYs2Re01wPmIrgzO6Le7EkEn1jCQL6yYEdamqTcwXt8V58AqadRPieltG',
+    shortname: 'william-chy'
+  });
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

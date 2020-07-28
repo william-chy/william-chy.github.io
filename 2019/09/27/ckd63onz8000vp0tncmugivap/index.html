@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="Front-End">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue.config.js">
+<meta property="og:url" content="http://www.whitet.top/2019/09/27/ckd63onz8000vp0tncmugivap/index.html">
+<meta property="og:site_name" content="William&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-17T02:48:14.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue.config.js">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.whitet.top/2019/09/27/ckd63onz8000vp0tncmugivap/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue.config.js | William's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-140223015-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-140223015-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">William's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Front-End Developer.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.whitet.top/2019/09/27/ckd63onz8000vp0tncmugivap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Chen">
+      <meta itemprop="description" content="前端 学习 技术 分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">vue.config.js
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-27T00:00:00+08:00">2019-09-27</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/09/27/ckd63onz8000vp0tncmugivap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/27/ckd63onz8000vp0tncmugivap/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** @format */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> SizePlugin = <span class="built_in">require</span>(<span class="string">'size-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> HardSourceWebpackPlugin = <span class="built_in">require</span>(<span class="string">'hard-source-webpack-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> proxyConfig = <span class="built_in">require</span>(<span class="string">'./proxyConfig'</span>)</span><br><span class="line"><span class="keyword">const</span> isProductionEnvFlag = process.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line"><span class="keyword">const</span> resolveRealPath = <span class="function"><span class="params">dir</span> =&gt;</span> path.join(__dirname, dir)</span><br><span class="line"><span class="keyword">const</span> loadGlobalStyles = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> variables = fs.readFileSync(</span><br><span class="line">		<span class="string">'src/assets/styles/variables.scss'</span>,</span><br><span class="line">		<span class="string">'utf-8'</span></span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">const</span> mixins = fs.readFileSync(<span class="string">'src/assets/styles/mixins.scss'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">	<span class="keyword">return</span> variables + mixins</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> DEPLOY_ENV = process.env.DEPLOY_ENV</span><br><span class="line"><span class="keyword">const</span> map = &#123;</span><br><span class="line">	local: <span class="string">'//static.12301.local/wx-h5/dist/local/wxh5'</span>,</span><br><span class="line">	test: <span class="string">'//static.12301.test/assets/build/wxh5'</span>,</span><br><span class="line">	release: <span class="string">'//static.12301dev.com/assets/build/wxh5'</span>,</span><br><span class="line">	release2: <span class="string">'//static2.12301dev.com/assets/build/wxh5'</span>,</span><br><span class="line">	production: <span class="string">'//static.12301.cc/assets/build/wxh5'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> publicPath = isProductionEnvFlag ? map[DEPLOY_ENV] || map.local : <span class="string">'/'</span></span><br><span class="line"><span class="keyword">const</span> outputDir = isProductionEnvFlag</span><br><span class="line">	? path.join(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/dist/<span class="subst">$&#123;DEPLOY_ENV&#125;</span>/wxh5`</span>)</span><br><span class="line">	: <span class="string">'dist'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//把版本号注入到环境变量里</span></span><br><span class="line">process.env.VUE_APP_VERSION = <span class="built_in">require</span>(<span class="string">'./package.json'</span>).version</span><br><span class="line"><span class="comment">//把后端接口环境注入到VUE_APP里</span></span><br><span class="line">process.env.VUE_APP_DEPLOY_ENV = DEPLOY_ENV;</span><br><span class="line"><span class="keyword">const</span> __Config__ = &#123;</span><br><span class="line">	<span class="comment">// Project deployment base</span></span><br><span class="line">	<span class="comment">// By default we assume your app will be deployed at the root of a domain,</span></span><br><span class="line">	<span class="comment">// e.g. https://www.my-app.com/</span></span><br><span class="line">	<span class="comment">// If your app is deployed at a sub-path, you will need to specify that</span></span><br><span class="line">	<span class="comment">// sub-path here. For example, if your app is deployed at</span></span><br><span class="line">	<span class="comment">// https://www.foobar.com/my-app/</span></span><br><span class="line">	<span class="comment">// then change this to '/my-app/'</span></span><br><span class="line">	publicPath,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// where to output built files</span></span><br><span class="line">	outputDir,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// whether to use eslint-loader for lint on save.</span></span><br><span class="line">	<span class="comment">// valid values: true | false | 'error'</span></span><br><span class="line">	<span class="comment">// when set to 'error', lint errors will cause compilation to fail.</span></span><br><span class="line">	lintOnSave: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// https://cli.vuejs.org/config/#runtimecompiler</span></span><br><span class="line">	runtimeCompiler: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// babel-loader skips `node_modules` deps by default.</span></span><br><span class="line">	<span class="comment">// explicitly transpile a dependency with this option.</span></span><br><span class="line">	transpileDependencies: [</span><br><span class="line">		<span class="comment">/* string or regex */</span></span><br><span class="line">	],</span><br><span class="line"></span><br><span class="line">	<span class="comment">// generate sourceMap for production build?</span></span><br><span class="line">	productionSourceMap: process.env.NODE_ENV !== <span class="string">'production'</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// https://github.com/vuejs/vue-cli/blob/dev/docs/css.md (#Need to put the top)</span></span><br><span class="line">	css: &#123;</span><br><span class="line">		loaderOptions: &#123;</span><br><span class="line">			sass: &#123;</span><br><span class="line">				data: loadGlobalStyles()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">		config.plugins.delete(<span class="string">'workbox'</span>);</span><br><span class="line">		<span class="comment">// config.plugins.delete('preload')</span></span><br><span class="line">		<span class="comment">// config.plugins.delete('prefetch')</span></span><br><span class="line"></span><br><span class="line">		config.plugin(<span class="string">"html"</span>).tap(<span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">			args[<span class="number">0</span>].minify = <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">return</span> args;</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">		config.output.chunkFilename = <span class="string">'[name].[contenthash:8].js'</span>;</span><br><span class="line">		</span><br><span class="line">		config.resolve.alias</span><br><span class="line">			.set(<span class="string">'vue$'</span>, <span class="string">'vue/dist/vue.esm.js'</span>)</span><br><span class="line">			.set(<span class="string">'@mixin'</span>, resolveRealPath(<span class="string">'src/mixin'</span>))</span><br><span class="line"></span><br><span class="line">		config.module.rules.delete(<span class="string">'svg'</span>)</span><br><span class="line">		config.module</span><br><span class="line">			.rule(<span class="string">'svg'</span>)</span><br><span class="line">			.test(<span class="regexp">/\.svg$/</span>)</span><br><span class="line">			.use(<span class="string">'svg-sprite-loader'</span>)</span><br><span class="line">			.loader(<span class="string">'svg-sprite-loader'</span>)</span><br><span class="line">			.options(&#123;</span><br><span class="line">				name: <span class="string">'[name]-[hash:7]'</span>,</span><br><span class="line">				prefixize: <span class="literal">true</span></span><br><span class="line">			&#125;)</span><br><span class="line">			</span><br><span class="line">		config.module</span><br><span class="line">			.rule(<span class="string">'xtpl'</span>)</span><br><span class="line">			.test(<span class="regexp">/\.tpl|xtpl$/</span>)</span><br><span class="line">			.use(<span class="string">'html-loader'</span>)</span><br><span class="line">			.loader(<span class="string">'html-loader'</span>)</span><br><span class="line">			.options(&#123;</span><br><span class="line">				minimize: <span class="literal">true</span></span><br><span class="line">			&#125;)</span><br><span class="line"></span><br><span class="line">		<span class="comment">//制定image loader</span></span><br><span class="line">		<span class="comment">// const imagesRule = config.module.rule('images')</span></span><br><span class="line">		<span class="comment">// imagesRule.uses.clear()</span></span><br><span class="line">		<span class="comment">// imagesRule.use('file-loader').loader('url-loader').options(&#123;</span></span><br><span class="line">		<span class="comment">// 	limit: 10000,</span></span><br><span class="line">		<span class="comment">// 	fallback: &#123;</span></span><br><span class="line">		<span class="comment">// 		loader: 'file-loader',</span></span><br><span class="line">		<span class="comment">// 		options: &#123;</span></span><br><span class="line">		<span class="comment">// 		name: 'img/[name].[hash:8].[ext]'</span></span><br><span class="line">		<span class="comment">// 		&#125;</span></span><br><span class="line">		<span class="comment">// 	&#125;</span></span><br><span class="line">		<span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">const</span> splitOptions = config.optimization.get(<span class="string">'splitChunks'</span>)</span><br><span class="line">		config.optimization.splitChunks(</span><br><span class="line">			<span class="built_in">Object</span>.assign(&#123;&#125;, splitOptions, &#123;</span><br><span class="line">				<span class="comment">// （缺省值5）按需加载时的最大并行请求数</span></span><br><span class="line">				maxAsyncRequests: <span class="number">16</span>,</span><br><span class="line">				<span class="comment">// （默认值3）入口点上的最大并行请求数</span></span><br><span class="line">				maxInitialRequests: <span class="number">16</span>,</span><br><span class="line">				<span class="comment">// （默认值：1）分割前共享模块的最小块数</span></span><br><span class="line">				minChunks: <span class="number">1</span>,</span><br><span class="line">				<span class="comment">// （默认值：30000）块的最小大小</span></span><br><span class="line">				minSize: <span class="number">30000</span>,</span><br><span class="line">				<span class="comment">// webpack 将使用块的起源和名称来生成名称: `vendors~main.js`,如项目与"~"冲突，则可通过此值修改，Eg: '-'</span></span><br><span class="line">				automaticNameDelimiter: <span class="string">'-'</span>,</span><br><span class="line">				<span class="comment">// cacheGroups is an object where keys are the cache group names.</span></span><br><span class="line">				name: <span class="literal">true</span>,</span><br><span class="line">				chunks : <span class="string">"all"</span>,</span><br><span class="line">				cacheGroups: &#123;</span><br><span class="line">					common: &#123;</span><br><span class="line">						name: <span class="string">`chunk-common`</span>,</span><br><span class="line">						minChunks: <span class="number">2</span>,</span><br><span class="line">						priority: <span class="number">1</span>,</span><br><span class="line">						chunks: <span class="string">'all'</span>,</span><br><span class="line">						reuseExistingChunk: <span class="literal">true</span></span><br><span class="line">					&#125;,</span><br><span class="line">					lib: &#123;</span><br><span class="line">						chunks: <span class="string">'all'</span>,</span><br><span class="line">						name: <span class="string">'chunk-vendor'</span>,</span><br><span class="line">						test: <span class="regexp">/[\\/]node_modules[\\/].*/g</span>,</span><br><span class="line">						priority: <span class="number">10</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// https://github.com/webpack-contrib/webpack-bundle-analyzer</span></span><br><span class="line">		<span class="keyword">if</span> (process.env.npm_config_report) &#123;</span><br><span class="line">			config</span><br><span class="line">				.plugin(<span class="string">'webpack-bundle-analyzer'</span>)</span><br><span class="line">				.use(<span class="built_in">require</span>(<span class="string">'webpack-bundle-analyzer'</span>).BundleAnalyzerPlugin)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// if(process.env.NODE_ENV==="development")&#123;</span></span><br><span class="line">		<span class="comment">// 	config.plugin("define").tap((definitions) =&gt; &#123;</span></span><br><span class="line">		<span class="comment">// 		Object.assign(definitions[0]['process.env'],&#123;</span></span><br><span class="line">		<span class="comment">// 			saccount : '"' + getSupplyAccountEnv() + '"'</span></span><br><span class="line">		<span class="comment">// 		&#125;)</span></span><br><span class="line">		<span class="comment">// 		return definitions;</span></span><br><span class="line">		<span class="comment">// 	&#125;)</span></span><br><span class="line">		<span class="comment">// &#125;</span></span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	configureWebpack: &#123;</span><br><span class="line">		plugins: [</span><br><span class="line">			<span class="comment">// NEED FIX 🚧 : HardSourceWebpackPlugin Will Cause Error.</span></span><br><span class="line">			<span class="comment">// new HardSourceWebpackPlugin(),</span></span><br><span class="line">			isProductionEnvFlag ? <span class="keyword">new</span> SizePlugin() : <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// use thread-loader for babel &amp; TS in production build</span></span><br><span class="line">	<span class="comment">// enabled by default if the machine has more than 1 cores</span></span><br><span class="line">	parallel: <span class="built_in">require</span>(<span class="string">'os'</span>).cpus().length &gt; <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// configure webpack-dev-server behavior</span></span><br><span class="line">	devServer: &#123;</span><br><span class="line">		<span class="comment">// index : "main.html",</span></span><br><span class="line">		open: process.platform === <span class="string">'darwin'</span>,</span><br><span class="line">		historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">		headers : &#123;</span><br><span class="line">			<span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">		port: <span class="number">8080</span>,</span><br><span class="line">		https: <span class="literal">false</span>,</span><br><span class="line">		hotOnly: <span class="literal">false</span>,</span><br><span class="line">		proxy: <span class="literal">null</span>, <span class="comment">// string | Object</span></span><br><span class="line">		before: <span class="function"><span class="params">app</span> =&gt;</span> &#123;&#125;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// options for 3rd party plugins</span></span><br><span class="line">	pluginOptions: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!isProductionEnvFlag) &#123;</span><br><span class="line">	__Config__.devServer.proxy = proxyConfig</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = __Config__</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onza000xp0tn09rsdfht/" rel="next" title="vue实用技巧">
+                <i class="fa fa-chevron-left"></i> vue实用技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onz6000qp0tnc5j0vgvr/" rel="prev" title="webpack技巧">
+                webpack技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">William Chen</p>
+              <div class="site-description motion-element" itemprop="description">前端 学习 技术 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/william-chy" title="GitHub &rarr; https://github.com/william-chy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:okm199911@outlook.com" title="E-Mail &rarr; mailto:okm199911@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/monkeychy6" title="Twitter &rarr; https://twitter.com/monkeychy6" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/people/William-Chen/100026041339393" title="FB Page &rarr; https://www.facebook.com/people/William-Chen/100026041339393" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/11491125/陈长生" title="StackOverflow &rarr; https://stackoverflow.com/users/11491125/陈长生" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/williamchen48" title="Instagram &rarr; https://instagram.com/williamchen48" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <audio autoplay controls loop style="width: 225px;">
+            Your browser does not support the <code>audio</code> element.
+            <source src="http://www.whitet.top/asserts/01.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/02.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/03.mp3" type="audio/mp3">
+          </audio>
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Chen</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://william-chy.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.whitet.top/2019/09/27/ckd63onz8000vp0tncmugivap/";
+    this.page.identifier = "2019/09/27/ckd63onz8000vp0tncmugivap/";
+    this.page.title = 'vue.config.js';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://william-chy.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'Wd4zdoJQYs2Re01wPmIrgzO6Le7EkEn1jCQL6yYEdamqTcwXt8V58AqadRPieltG',
+    shortname: 'william-chy'
+  });
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

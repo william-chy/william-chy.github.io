@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arial:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="try…catch…大家都知道try..catch要模拟当前执行环境，会很耗费性能，所以尽量用自执行函数 try…catch语句标记要执行的语句，并指定一个当有异常抛出时候的响应 finally语句块的返回值 如果finally语句块中有返回值，那么这个值将作为整个try…catch语句的返回，无论try语句块或者catch语句块中是否有返回，这包括了catch中的异常。 给出总结 使用 try">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="补缺补漏JS">
+<meta property="og:url" content="http://www.whitet.top/2019/09/27/ckd63onzu001op0tno7v7lqfr/index.html">
+<meta property="og:site_name" content="William&#39;s blog">
+<meta property="og:description" content="try…catch…大家都知道try..catch要模拟当前执行环境，会很耗费性能，所以尽量用自执行函数 try…catch语句标记要执行的语句，并指定一个当有异常抛出时候的响应 finally语句块的返回值 如果finally语句块中有返回值，那么这个值将作为整个try…catch语句的返回，无论try语句块或者catch语句块中是否有返回，这包括了catch中的异常。 给出总结 使用 try">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-17T02:23:32.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="补缺补漏JS">
+<meta name="twitter:description" content="try…catch…大家都知道try..catch要模拟当前执行环境，会很耗费性能，所以尽量用自执行函数 try…catch语句标记要执行的语句，并指定一个当有异常抛出时候的响应 finally语句块的返回值 如果finally语句块中有返回值，那么这个值将作为整个try…catch语句的返回，无论try语句块或者catch语句块中是否有返回，这包括了catch中的异常。 给出总结 使用 try">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.whitet.top/2019/09/27/ckd63onzu001op0tno7v7lqfr/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>补缺补漏JS | William's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-140223015-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-140223015-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">William's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Front-End Developer.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.whitet.top/2019/09/27/ckd63onzu001op0tno7v7lqfr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Chen">
+      <meta itemprop="description" content="前端 学习 技术 分享">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="William's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">补缺补漏JS
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-27T00:00:00+08:00">2019-09-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/09/27/ckd63onzu001op0tno7v7lqfr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/27/ckd63onzu001op0tno7v7lqfr/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="try…catch…"><a href="#try…catch…" class="headerlink" title="try…catch…"></a>try…catch…</h3><p>大家都知道try..catch要模拟当前执行环境，会很耗费性能，所以尽量用自执行函数</p>
+<p>try…catch语句标记要执行的语句，并指定一个当有异常抛出时候的响应</p>
+<p><strong>finally语句块的返回值</strong></p>
+<p>如果finally语句块中有返回值，那么这个值将作为整个try…catch语句的返回，无论try语句块或者catch语句块中是否有返回，这包括了catch中的异常。</p>
+<p><strong>给出总结</strong></p>
+<p>使用 try catch 的使用无论是在 try 中的代码还是在 catch 中的代码性能消耗都是一样的。</p>
+<p>需要注意的性能消耗在于 try catch 中不要直接塞进去太多的代码（声明太多的变量），最好是吧所有要执行的代码放在另一个 function 中，通过调用这个 function 来执行。</p>
+<p>针对第二点，可以查看 ECMA 中关于 try catch 的解释，在代码进入 try catch 的时候 js引擎会拷贝当前的词法环境，拷贝的其实就是当前 scope 下的所有的变量。</p>
+<p><strong>建议</strong></p>
+<p>在使用 try catch 的时候尽量把 try catch 放在一个相对干净的 scope 中，同时在 try catch 语句中也尽量保证足够少的变量，最好通过函数调用方式来 try catch。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> superagent.post(<span class="string">'/api/pet'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="控制台输出"><a href="#控制台输出" class="headerlink" title="控制台输出"></a>控制台输出</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在<span class="built_in">console</span>.log()或<span class="built_in">console</span>.debug()中输出时会有%d,%s等符号。</span><br><span class="line"></span><br><span class="line">%s <span class="keyword">for</span> a <span class="built_in">String</span> value 字符类型</span><br><span class="line"></span><br><span class="line">%d or %i <span class="keyword">for</span> a Integer value 整型</span><br><span class="line"></span><br><span class="line">%f <span class="keyword">for</span> a Floating point number 浮点类型number</span><br><span class="line"></span><br><span class="line">%o <span class="keyword">for</span> an <span class="built_in">Object</span> hyperlink 对象类型超链接(可点击查看)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'%s hahah %s'</span>,a,<span class="number">66</span>)</span><br><span class="line">==&gt; <span class="number">123</span> hahah <span class="number">66</span></span><br></pre></td></tr></table></figure>
+<p><code>defineProperty</code>支支持IE9以上的的现代浏览器，这也是为何vue等利用defineProperty来劫持属性的框架才只能支持到IE9</p>
+<h4 id="Object-defineProperty-obj-prop-descriptor"><a href="#Object-defineProperty-obj-prop-descriptor" class="headerlink" title="Object.defineProperty(obj, prop, descriptor)"></a>Object.defineProperty(obj, prop, descriptor)</h4><p>  descriptorc参数涉及到 数据属性和访问器属性</p>
+<ol>
+<li><p>数据属性 </p>
+<ul>
+<li><p><code>configurable</code></p>
+<p>当且仅当该属性的 configurable 为 true 时，该属性<code>描述符</code>才能够被改变，同时该属性也能从对应的对象上被删除。<strong>默认为 false</strong>。而数据默认true</p>
+</li>
+<li><p><code>enumerable</code></p>
+<p>当且仅当该属性的<code>enumerable</code>为<code>true</code>时，该属性才能够出现在对象的枚举属性中。<strong>默认为 false</strong>。而数据默认true</p>
+</li>
+</ul>
+<p><strong>数据描述符同时具有以下可选键值</strong>：</p>
+<ul>
+<li><p><code>value</code></p>
+<p>该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。<strong>默认为 undefined</strong>。</p>
+</li>
+<li><p><code>writable</code></p>
+<p>当且仅当该属性的<code>writable</code>为<code>true</code>时，<code>value</code>才能被<strong>赋值运算</strong>符改变。<strong>默认为 false</strong>。而数据默认true</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line"> b: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">'b'</span>, &#123;</span><br><span class="line"> writable: <span class="literal">false</span>,</span><br><span class="line"> value: <span class="number">5</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="built_in">console</span>.log(a.b = <span class="number">5</span>)</span><br><span class="line"><span class="comment">//Cannot assign to read only property 'b' of object '#&lt;Object&gt;'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>访问器属性</p>
+<ul>
+<li>get</li>
+</ul>
+<p>一个给属性提供 getter 的方法，如果没有 getter 则为 <code>undefined</code>。当访问该属性时，该方法会被执行，方法执行时没有参数传入，<strong>但是会传入<code>this</code>对象</strong>（由于继承关系，这里的<code>this</code>并不一定是定义该属性的对象）。 会是defineProperty的第一个参数‘obj’</p>
+<p><strong>默认为 undefined</strong>。</p>
+<ul>
+<li>set</li>
+</ul>
+<p>一个给属性提供 setter 的方法，如果没有 setter 则为 <code>undefined</code>。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。</p>
+<p><strong>默认为 undefined</strong>。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onzw001rp0tnj1zzl6kw/" rel="next" title="常用设计模式的介绍以其使用场景（用ES6实现）">
+                <i class="fa fa-chevron-left"></i> 常用设计模式的介绍以其使用场景（用ES6实现）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/27/ckd63onzs001lp0tn206pdpxb/" rel="prev" title="流程图规范">
+                流程图规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">William Chen</p>
+              <div class="site-description motion-element" itemprop="description">前端 学习 技术 分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/william-chy" title="GitHub &rarr; https://github.com/william-chy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:okm199911@outlook.com" title="E-Mail &rarr; mailto:okm199911@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/monkeychy6" title="Twitter &rarr; https://twitter.com/monkeychy6" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/people/William-Chen/100026041339393" title="FB Page &rarr; https://www.facebook.com/people/William-Chen/100026041339393" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/11491125/陈长生" title="StackOverflow &rarr; https://stackoverflow.com/users/11491125/陈长生" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/williamchen48" title="Instagram &rarr; https://instagram.com/williamchen48" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <audio autoplay controls loop style="width: 225px;">
+            Your browser does not support the <code>audio</code> element.
+            <source src="http://www.whitet.top/asserts/01.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/02.mp3" type="audio/mp3">
+            <source src="http://www.whitet.top/asserts/03.mp3" type="audio/mp3">
+          </audio>
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#try…catch…"><span class="nav-number">1.</span> <span class="nav-text">try…catch…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台输出"><span class="nav-number">2.</span> <span class="nav-text">控制台输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty-obj-prop-descriptor"><span class="nav-number">2.1.</span> <span class="nav-text">Object.defineProperty(obj, prop, descriptor)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">William Chen</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://william-chy.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.whitet.top/2019/09/27/ckd63onzu001op0tno7v7lqfr/";
+    this.page.identifier = "2019/09/27/ckd63onzu001op0tno7v7lqfr/";
+    this.page.title = '补缺补漏JS';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://william-chy.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'Wd4zdoJQYs2Re01wPmIrgzO6Le7EkEn1jCQL6yYEdamqTcwXt8V58AqadRPieltG',
+    shortname: 'william-chy'
+  });
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
